@@ -22,7 +22,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 				<ListItem
 					key={key}
 					secondaryAction={
-						<Grid container spacing={1} sx={{maxWidth: '10em', justifyContent: 'flex-end'}}>
+						<Grid container sx={{maxWidth: '10em', justifyContent: 'flex-end', gap: 1}}>
 							{ev.genre.map((genre) => (
 								<Chip
 									sx={{ background: GENRES_COLORS[genre], color: "#fff" }}

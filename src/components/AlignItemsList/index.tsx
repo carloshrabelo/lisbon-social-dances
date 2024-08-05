@@ -1,7 +1,7 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Chip, Grid2 } from "@mui/material";
+import { Chip, Grid } from "@mui/material";
 import useEventAPI from "../../store/useEventAPI";
 import GENRES_COLORS from "../../const/GENRES_COLORS";
 import type { Genre } from "../../const/GENRES";
@@ -22,7 +22,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 				<ListItem
 					key={key}
 					secondaryAction={
-						<Grid2 container spacing={1} sx={{maxWidth: '10em', justifyContent: 'flex-end'}}>
+						<Grid container spacing={1} sx={{maxWidth: '10em', justifyContent: 'flex-end'}}>
 							{ev.genre.map((genre) => (
 								<Chip
 									sx={{ background: GENRES_COLORS[genre], color: "#fff" }}
@@ -31,7 +31,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 									size="small"
 								/>
 							))}
-						</Grid2>
+						</Grid>
 					}
 				>
 					<ListItemText

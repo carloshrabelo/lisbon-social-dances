@@ -1,7 +1,7 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Chip, Grid2, IconButton } from "@mui/material";
+import { Chip, Grid, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useEventAPI from "../../store/useEventAPI";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -30,7 +30,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 						</IconButton>
 					}
 				>
-					<Grid2
+					<Grid
 						// spacing={{ xs: 1, sm: 2 }}
 						sx={{ width: "2.5rem" }}
 						direction="row"
@@ -43,7 +43,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 								key={genre}
 							/>
 						))}
-					</Grid2>
+					</Grid>
 					<ListItemText
 						secondary={
 							<>

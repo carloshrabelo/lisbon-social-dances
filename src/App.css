@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.li{
+  list-style-type: none;
+  margin: 1rem 0;
+  border-bottom: #ccc solid 1px;
+}
+.li.sticky{
+  background: red;
+  position: sticky;
+  top:48px;
+}
+.li >div{
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}

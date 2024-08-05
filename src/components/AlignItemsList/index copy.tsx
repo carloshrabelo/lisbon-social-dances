@@ -6,8 +6,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import useEventAPI from "../../store/useEventAPI";
 import CircleIcon from "@mui/icons-material/Circle";
 import GENRES_COLORS from "../../const/GENRES_COLORS";
+import type { Genre } from "../../const/GENRES";
 
-export default function AlignItemsList({ filters }) {
+export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
 	// const { data, isLoading, error } = useEvent()
 
@@ -36,7 +37,7 @@ export default function AlignItemsList({ filters }) {
 					>
 						{/* {JSON.stringify(ev.genre)} */}
 
-						{ev.genre.map((genre, key) => (
+						{ev.genre.map((genre) => (
 							<CircleIcon
 								sx={{ fontSize: "1rem", color: GENRES_COLORS[genre] }}
 								key={genre}
@@ -67,7 +68,7 @@ export default function AlignItemsList({ filters }) {
               {ev.summary}
             </div>
             <div>
-						{ev.genre.map((genre, key) => (
+						{ev.genre.map((genre) => (
 							<Chip
 								sx={{  background: GENRES_COLORS[genre], color: "#fff"}}
 								key={genre}

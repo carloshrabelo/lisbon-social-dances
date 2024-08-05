@@ -1,12 +1,5 @@
-// src/hooks/useEvent.ts
 import ical, { type CalendarComponent } from "ical"
 import useFetch from "../hook/useFetch"
-
-interface EventState {
-  data: CalendarComponent[] | null
-  isLoading: boolean
-  error: string | null
-}
 
 export const transformData = async (val: string): Promise<CalendarComponent[]> => {
   const currentDate = new Date()
@@ -14,12 +7,12 @@ export const transformData = async (val: string): Promise<CalendarComponent[]> =
   
   return Object.values(data)
     .filter((item)=> item.type === "VEVENT" && item.start instanceof Date && item.start > currentDate)
-    .sort((firstItem, secondItem) => firstItem.start.getTime() - secondItem.start.getTime())
+    .sort((firstItem, secondItem) => firstItem.start && secondItem.start && firstItem.start.getTime() - secondItem.start.getTime() || 0)
 }
 
 
 export const useEvent = () => {
-  const { data, ...mod } = useFetch<CalendarComponent[]>("/mock/basic.ics", { type: 'text' }, transformData)
+  const { data, ...mod } = useFetch<Promise<CalendarComponent[]>, string>("/mock/basic.ics", { type: 'text' , transformData})
   // console.info(data)
   return { ...mod, data }
 }

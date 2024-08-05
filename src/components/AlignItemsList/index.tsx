@@ -1,12 +1,12 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Chip, Divider, Grid2 } from "@mui/material";
+import { Chip, Grid2 } from "@mui/material";
 import useEventAPI from "../../store/useEventAPI";
 import GENRES_COLORS from "../../const/GENRES_COLORS";
-import { Fragment } from "react/jsx-runtime";
+import type { Genre } from "../../const/GENRES";
 
-export default function AlignItemsList({ filters }) {
+export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
 	// const { data, isLoading, error } = useEvent()
 

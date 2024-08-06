@@ -7,7 +7,7 @@ import GENRES_COLORS from "./const/GENRES_COLORS";
 import OverrideCallbackCssBaseline from "./theme/OverrideCallbackCssBaseline";
 
 export default function App() {
-	const [selectedGenres, setSelectedGenres] = useState<Genre[]>(["Samba"]);
+	const [selectedGenres, setSelectedGenres] = useState<Genre[]>([]);
 
 	const handleFormat = (
 		_event: MouseEvent<HTMLElement>,

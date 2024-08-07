@@ -18,18 +18,27 @@ export default function App() {
 
 	return (
 		<OverrideCallbackCssBaseline>
-		<Box sx={{ display: 'flex' }} >
+		<Box >
 			<Paper sx={{ top: 0, position: "sticky", zIndex: 1 }} elevation={0}>
 				<ToggleButtonGroup
-					sx={{ top: 0, position: "sticky" }}
 					color="primary"
 					value={selectedGenres}
 					onChange={handleFormat}
 					aria-label="Genre Filter"
-					orientation="vertical"
-
 				>
-					{GENRES.map((genre) => (
+					{GENRES.slice(0,5).map((genre) => (
+						<ToggleButton value={genre} key={genre} sx={{'&:before':{ content:"''", backgroundColor: GENRES_COLORS[genre], right: '8px', top: '8px', position: 'absolute', width: '10px', height:'10px', borderRadius: '50%' }}} >
+							{genre}
+						</ToggleButton>
+					))}
+				</ToggleButtonGroup>
+				<ToggleButtonGroup
+					color="primary"
+					value={selectedGenres}
+					onChange={handleFormat}
+					aria-label="Genre Filter"
+				>
+					{GENRES.slice(5,10).map((genre) => (
 						<ToggleButton value={genre} key={genre} sx={{'&:before':{ content:"''", backgroundColor: GENRES_COLORS[genre], right: '8px', top: '8px', position: 'absolute', width: '10px', height:'10px', borderRadius: '50%' }}} >
 							{genre}
 						</ToggleButton>

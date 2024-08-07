@@ -1,7 +1,4 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
-import ListItemText from "@mui/material/ListItemText";
 import { Chip, Grid } from "@mui/material";
 import useEventAPI from "../../store/useEventAPI";
 import GENRES_COLORS from "../../const/GENRES_COLORS";

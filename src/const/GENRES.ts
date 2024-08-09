@@ -5,6 +5,8 @@ export const ALIAS = {
   "WCS": "WEST COAST SWING",
   "AFRO":"KIZOMBA SEMBA",
   "LATINAS":"SALSA BACHATA",
+  'GHETTO ZOUK': '',
+  'ZOUK✅': '',
 };
 
 export const GENRES = [

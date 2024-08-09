@@ -1,4 +1,3 @@
-import type { Dispatch } from "react";
 import type { Genre } from "../const/GENRES";
 import { Box, Paper } from "@mui/material";
 import Tag from "./Tag";
@@ -16,13 +15,9 @@ const Zezo = Object.entries(genreToPalette)
 export default function Filter({
 	selected = [],
 	onChange,
-}: { selected: Genre[]; onChange: Dispatch<React.SetStateAction<Genre[]>> }) {
-	const toggleButton = (genre: Genre) => () =>
-		onChange((selected) =>
-			selected.includes(genre)
-				? selected.filter((e) => e !== genre)
-				: [...selected, genre],
-		);
+	clearFilter
+}: { selected: Genre[]; onChange: (val:Genre) => void ; clearFilter: () => void }) {
+	const toggleButton = (genre: Genre) => () => onChange(genre);
 
 	return (
 		<Paper
@@ -64,7 +59,7 @@ export default function Filter({
 				>
 					<QuestionMarkRounded width='1em'/>
 				</Tag> */}
-				<Tag color="gray" onClick={() => onChange([])}>
+				<Tag color="gray" onClick={clearFilter}>
 					<ArrowPathIcon width="1em" />
 				</Tag>
 			</Box>

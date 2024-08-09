@@ -12,7 +12,6 @@ export const Head = styled.div`
   border-radius: 10px 10px 0 0;
   cursor: pointer;
   position: sticky;
-  top: 50px;
 `;
 
 export const Footer = styled.div`

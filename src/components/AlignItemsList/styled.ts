@@ -29,3 +29,9 @@ export const Footer = styled.div`
   bottom: 0;
   margin-bottom: 10px;
 `;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;

@@ -20,18 +20,18 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 		<>
 			{/* {JSON.stringify(Object.groupBy(data, ({ creator }) => creator))} */}
 			<div>
-				{Object.entries(xpto).map(([date, sociais]: [string, any]) => (
+				{Object.entries(xpto).map(([date, sociais]: [string, EventImproved[]]) => (
 					<div key={date}>
 						<S.Head>
 							{new Intl.DateTimeFormat("pt-BR", {
 								dateStyle: "medium",
 							}).format(new Date(date))}
 						</S.Head>
-						<div>
-							{(sociais as EventImproved[])?.map((ev) => (
+						<S.Content>
+							{sociais?.map((ev) => (
 								<Item {...ev} key={ev.id} />
 							))}
-						</div>
+						</S.Content>
 						<S.Footer>
 							{new Intl.DateTimeFormat("pt-BR", {
 								dateStyle: "medium",

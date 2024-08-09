@@ -15,7 +15,6 @@ export default function Item(ev:EventImproved) {
 			display: "flex",
 			width: "100%",
 			position: "relative",
-			mb: "1rem",
 
 			padding: 2,
 			boxShadow: 3,

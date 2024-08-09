@@ -6,13 +6,17 @@ import findGenres from "../utils/findGenres";
 const baseUrl =
 	"https://clients6.google.com/calendar/v3/calendars/pasdedeux.pt@gmail.com/events?";
 const currentDate = new Date();
-const currentDateISO = currentDate.toISOString();
+currentDate.setUTCHours(0, 0, 0, 0);
+const nextMonth = new Date();
+nextMonth.setMonth(currentDate.getMonth() + 1);
 
 const params1 = new URLSearchParams({
 	sanitizeHtml: "true",
 	calendarId: "pasdedeux.pt@gmail.com",
-	timeMin: currentDateISO,
+	timeMin:  currentDate.toISOString(),
 	key: "AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs",
+	singleEvents: 'true',
+	timeMax: nextMonth.toISOString()
 }).toString();
 
 const d = (t: Xpto) => new Date("date" in t ? t.date : t.dateTime);
@@ -58,7 +62,7 @@ type Calendar = {
 	items: Item[];
 };
 
-type EventImproved = Event & {
+export type EventImproved = Event & {
 	genre: Genre[];
 }
 

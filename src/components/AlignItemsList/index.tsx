@@ -1,8 +1,8 @@
-import Box from "@mui/material/Box";
-import { Chip, Grid } from "@mui/material";
-import useEventAPI from "../../store/useEventAPI";
-import GENRES_COLORS from "../../const/GENRES_COLORS";
+import useEventAPI, { type EventImproved } from "../../store/useEventAPI";
 import type { Genre } from "../../const/GENRES";
+import Item from "../Item";
+import * as S from "./styled";
+import groupBy from "lodash/groupBy";
 
 export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
@@ -10,70 +10,34 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	if (isLoading) return null;
 	if (error) return error;
 
+	const xpto = groupBy(data, ({ start }: EventImproved) => {
+		const currentDate = new Date(start.toISOString());
+		currentDate.setUTCHours(0, 0, 0, 0);
+		return currentDate.toISOString();
+	});
+
 	return (
 		<>
+			{/* {JSON.stringify(Object.groupBy(data, ({ creator }) => creator))} */}
 			<div>
-
-				{data?.map((ev) => (
-					<Box
-						key={ev.id}
-						sx={{
-							display: "flex",
-							width: "100%",
-							position: "relative",
-							mb: "1rem",
-							
-				padding: 2,
-				boxShadow: 3,
-				borderRadius: 3,
-			}}
-					>
-						<Box sx={{ maxWidth: "3.5em" }}>
-							<div>
-								{new Intl.DateTimeFormat("pt-BR", {
-									month: "numeric",
-									day: "numeric",
-								}).format(ev.start)}
-							</div>
-							<div>
-								{Intl.DateTimeFormat("pt-BR", {
-									timeStyle: "short",
-								}).format(ev.start)}
-								{" - "}
-								{Intl.DateTimeFormat("pt-BR", {
-									timeStyle: "short",
-								}).format(ev.end)}
-							</div>
-						</Box>
-						<Box sx={{ display: "flex", flex: 1, flexDirection: 'column' }}>
-							<Box sx={{ flex: 1 }}>
-								<div>{ev.summary}</div>
-								<small>{ev.location}</small>
-							</Box>
-							<Box>
-								<Grid
-									container
-									sx={{
-										// maxWidth: "10em",
-										justifyContent: "flex-end",
-										gap: 1,
-										// position: "absolute",
-										bottom: "8px",
-										right: "8px",
-									}}
-								>
-									{ev.genre.map((genre) => (
-										<Chip
-											sx={{ background: GENRES_COLORS[genre], color: "#fff" }}
-											key={genre}
-											label={genre}
-											size="small"
-										/>
-									))}
-								</Grid>
-							</Box>
-						</Box>
-					</Box>
+				{Object.entries(xpto).map(([date, sociais]: [string, any]) => (
+					<div key={date}>
+						<S.Head>
+							{new Intl.DateTimeFormat("pt-BR", {
+								dateStyle: "medium",
+							}).format(new Date(date))}
+						</S.Head>
+						<div>
+							{(sociais as EventImproved[])?.map((ev) => (
+								<Item {...ev} key={ev.id} />
+							))}
+						</div>
+						<S.Footer>
+							{new Intl.DateTimeFormat("pt-BR", {
+								dateStyle: "medium",
+							}).format(new Date(date))}
+						</S.Footer>
+					</div>
 				))}
 			</div>
 		</>

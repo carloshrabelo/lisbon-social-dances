@@ -15,7 +15,7 @@ const theme = createTheme({
 	},
 });
 
-export default function OverrideCallbackCssBaseline({
+export default function Theme({
 	children,
 }: { children: ReactNode }) {
 	return (

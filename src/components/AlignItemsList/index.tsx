@@ -6,24 +6,33 @@ import type { Genre } from "../../const/GENRES";
 
 export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
-	// const { data, isLoading, error } = useEvent()
-
-	// const data = [{}]
 
 	if (isLoading) return null;
 	if (error) return error;
-	// return JSON.stringify(data[0], null, 2)
 
 	return (
 		<>
 			<div>
+
 				{data?.map((ev) => (
-					<Box key={ev.iCalUID} sx={{ display: "flex", width: '100%', position: 'relative', mb:'2rem' }}>
+					<Box
+						key={ev.id}
+						sx={{
+							display: "flex",
+							width: "100%",
+							position: "relative",
+							mb: "1rem",
+							
+				padding: 2,
+				boxShadow: 3,
+				borderRadius: 3,
+			}}
+					>
 						<Box sx={{ maxWidth: "3.5em" }}>
 							<div>
 								{new Intl.DateTimeFormat("pt-BR", {
-									month: 'numeric',
-									day: 'numeric'
+									month: "numeric",
+									day: "numeric",
 								}).format(ev.start)}
 							</div>
 							<div>
@@ -36,7 +45,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								}).format(ev.end)}
 							</div>
 						</Box>
-						<Box sx={{ display: "flex", flex: 1  }}>
+						<Box sx={{ display: "flex", flex: 1, flexDirection: 'column' }}>
 							<Box sx={{ flex: 1 }}>
 								<div>{ev.summary}</div>
 								<small>{ev.location}</small>
@@ -48,9 +57,9 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 										// maxWidth: "10em",
 										justifyContent: "flex-end",
 										gap: 1,
-										position: "absolute",
-										top: '-1em',
-										right:0
+										// position: "absolute",
+										bottom: "8px",
+										right: "8px",
 									}}
 								>
 									{ev.genre.map((genre) => (

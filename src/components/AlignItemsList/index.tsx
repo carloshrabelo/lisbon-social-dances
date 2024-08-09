@@ -3,11 +3,10 @@ import type { Genre } from "../../const/GENRES";
 import Item from "../Item";
 import * as S from "./styled";
 import groupBy from "lodash/groupBy";
-import { Box, Drawer } from "@mui/material";
-import { useState } from "react";
+import { Box, Divider, Drawer } from "@mui/material";
+import { Fragment, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import Tag from "../Tag";
-import { palette } from "../../utils/all";
 
 export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
@@ -26,7 +25,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 
 	return (
 		<>
-			<div>
+			<Box sx={{ px: 2 }}>
 				{Object.entries(xpto).map(
 					([date, sociais]: [string, EventImproved[]]) => (
 						<div key={date}>
@@ -36,12 +35,14 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								}).format(new Date(date))}
 							</S.Head>
 							<S.Content>
-								{sociais?.map((ev) => (
-									<Item
-										{...ev}
-										key={ev.id}
-										onClick={() => setSelectedSocial(ev)}
-									/>
+								{sociais?.map((ev, key) => (
+									<Fragment key={ev.id}>
+										{!!key && <Divider sx={{ mx: 2 }} />}
+										<Item
+											{...ev}
+											onClick={() => setSelectedSocial(ev)}
+										/>
+									</Fragment>
 								))}
 							</S.Content>
 							<S.Footer>
@@ -52,7 +53,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						</div>
 					),
 				)}
-			</div>
+			</Box>
 
 			<Drawer
 				open={!!selectedSocial}
@@ -60,7 +61,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 				anchor="right"
 			>
 				<Box>
-					<S.Head>
+					<S.Head xpto>
 						<Box
 							sx={{
 								display: "flex",
@@ -71,10 +72,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						>
 							{selectedSocial?.summary}
 							<div>
-								<Tag
-									myColor={palette.Red}
-									onClick={() => setSelectedSocial(null)}
-								>
+								<Tag color="red" onClick={() => setSelectedSocial(null)}>
 									<XMarkIcon width="1em" />
 								</Tag>
 							</div>
@@ -84,8 +82,9 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						sx={{
 							whiteSpaceCollapse: "preserve",
 							p: 2,
-							maxWidth: "100%",
+							maxWidth: "100vw",
 							textWrap: "wrap",
+							overflow: "auto",
 						}}
 					>
 						{selectedSocial?.description}

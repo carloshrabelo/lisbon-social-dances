@@ -1,21 +1,20 @@
-import { palette } from "../utils/all";
+import { palette, type Color } from "../theme/palette";
 import type { Genre } from "./GENRES";
 
-type GenreColors = Record<Genre, string>;
+type GenreColors = Record<Genre, Color>;
 
-// Define the genre to color mapping
 export const genreToPalette: GenreColors = {
-	Zouk: "Purple",
-	Forró: "Brown",
-	Salsa: "Red",
-	Bachata: "Wine",
-	Kizomba: "DarkBlue",
-	Semba: "DarkGreen",
-	Swing: "LightBlue",
-	Tango: "Orange",
-	"West Coast Swing": "PowderBlue",
-	Bolero: "LightPink",
-	Samba: "Yellow",
+	Bachata: "wine",
+	Bolero: "pink",
+	Forró: "brown",
+	Kizomba: "dark-blue",
+	Salsa: "red",
+	Samba: "yellow",
+	Semba: "dark-green",
+	Swing: "light-blue",
+	Tango: "orange",
+	Zouk: "purple",
+	"West Coast Swing": "teal"
 };
 
 export const GENRES_COLORS: GenreColors = Object.fromEntries(

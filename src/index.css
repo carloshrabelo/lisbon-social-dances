@@ -1,0 +1,26 @@
+@import url(https://db.onlinewebfonts.com/c/3ce02323ef21eae02b8bfb68aa5b02be?family=Feather);
+@import url(https://db.onlinewebfonts.com/c/14936bb7a4b6575fd2eee80a3ab52cc2?family=Feather+Bold);
+@import url(https://db.onlinewebfonts.com/c/092c449c2b2bc64e9c6bbe8a7b9b291f?family=DIN+Next+Rounded+LT+W04+Medium);
+
+html, body, h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "DIN Next Rounded LT W04 Medium", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "Feather Bold", "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+small{
+  font-family: "Feather", "DIN Next Rounded LT W04 Medium", "Roboto", "Helvetica", "Arial", sans-serif;
+}

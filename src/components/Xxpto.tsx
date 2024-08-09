@@ -1,15 +1,13 @@
 import Box from "@mui/material/Box";
-import {
-	combinedColors,
-	genreToPalette,
-	getContrastingColor,
-	palette,
-} from "../utils/all";
 import ColorBox from "./ColorBox";
+import { genreToPalette } from "../const/GENRES_COLORS";
+import { palette } from "../theme/palette";
+import { getContrastingColor } from "../utils/getContrastingColor";
+import { combinedColors } from "../utils/all";
 
 const Zezo = Object.entries(genreToPalette).map(([name, value]) => ({
 	name,
-	palette: palette[value] || palette.Gray,
+	palette: palette[value] || palette.gray,
 })).sort((a, b) => a.name < b.name ?  -1 : 1)
 
 export default function Xpto() {

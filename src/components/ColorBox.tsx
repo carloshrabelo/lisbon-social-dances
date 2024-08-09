@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import { getContrastingColor, type ColorEntry } from "../utils/all";
+import type { ColorEntry } from "../theme/palette";
+import { getContrastingColor } from "../utils/getContrastingColor";
 
 export const ColorBox = ({
 	name,

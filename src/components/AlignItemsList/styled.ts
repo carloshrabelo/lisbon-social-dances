@@ -1,22 +1,25 @@
 import styled from "@emotion/styled";
-import {  getContrastingColor, palette } from "../../utils/all";
+import { palette } from "../../theme/palette";
+import { getContrastingColor } from "../../utils/getContrastingColor";
 
-export const Head = styled.div`
-  background-color: ${palette.DarkGray.main};
-  color: ${getContrastingColor(palette.DarkGray.main)};
+export const Head = styled.h2<{ xpto?: boolean }>`
+  font-size: 1em;
+  background-color: ${palette['dark-gray'].main};
+  color: ${getContrastingColor(palette['dark-gray'].main)};
   flex: 1;
   text-align: center;
   font-weight: 700;
   padding: 4px 12px;
   position: relative;
-  border-radius: 10px 10px 0 0;
+  border-radius: ${p => !p.xpto && '10px 10px 0 0'};
   cursor: pointer;
   position: sticky;
 `;
 
-export const Footer = styled.div`
-  background-color: ${palette.DarkGray.main};
-  color: ${getContrastingColor(palette.DarkGray.main)};
+export const Footer = styled.h2`
+  font-size: 1em;
+  background-color: ${palette['dark-gray'].main};
+  color: ${getContrastingColor(palette['dark-gray'].main)};
   flex: 1;
   text-align: center;
   font-weight: 700;
@@ -32,7 +35,8 @@ export const Footer = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+  border: 1px solid hsla(220, 35%, 88%, 0.5);
 
   &>div:first-of-type{
     border-top-left-radius: 0;

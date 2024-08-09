@@ -1,8 +1,11 @@
 import Box from "@mui/material/Box";
-import { Chip, Divider, Grid } from "@mui/material";
-import GENRES_COLORS from "../const/GENRES_COLORS";
+import { Divider, Grid } from "@mui/material";
+import { genreToPalette } from "../const/GENRES_COLORS";
 import type { Genre } from "../const/GENRES";
 import type { Event } from "../types/event";
+import { MapPinIcon } from "@heroicons/react/24/outline";
+import { palette } from "../utils/all";
+import Tag from "./Tag";
 
 type EventImproved = Event & {
 	genre: Genre[];
@@ -15,53 +18,71 @@ export default function Item({
 	return (
 		<Box
 			sx={{
-				display: "flex",
-				width: "100%",
-				position: "relative",
-
-				padding: 2,
-				boxShadow: 3,
-				borderRadius: 3,
+				padding: 1,
+				borderTop:0,
+				borderBottom:0,
 			}}
 			onClick={onClick}
 		>
-			<Box sx={{ maxWidth: "3.5em" }}>
-				<div>
-					{Intl.DateTimeFormat("pt-BR", {
-						timeStyle: "short",
-					}).format(ev.start)}
-					<Divider />
-					{Intl.DateTimeFormat("pt-BR", {
-						timeStyle: "short",
-					}).format(ev.end)}
-				</div>
-			</Box>
-			<Box sx={{ display: "flex", flex: 1, flexDirection: "column", ml: 1 }}>
-				<Box sx={{ flex: 1 }}>
-					<div>{ev.summary}</div>
-					<small>{ev.location}</small>
-				</Box>
-				<Box>
-					<Grid
-						container
+			<Box
+				sx={{
+					display: "flex",
+					width: "100%",
+					position: "relative",
+					gap: 1,
+				}}
+				onClick={onClick}
+			>
+				<Box
+					sx={{
+						maxWidth: "3.5em",
+						position: "relative",
+						alignContent: "center",
+					}}
+				>
+					<Box
 						sx={{
-							// maxWidth: "10em",
-							justifyContent: "flex-end",
-							gap: 1,
-							// position: "absolute",
-							bottom: "8px",
-							right: "8px",
+							position: "sticky",
+							top: '32px',
+							bottom: '32px',
+							background: palette.gray.main,
+							textAlign: "center",
+							p: "4px",
+							borderRadius: "4px",
 						}}
 					>
-						{ev.genre.map((genre) => (
-							<Chip
-								sx={{ background: GENRES_COLORS[genre], color: "#fff" }}
-								key={genre}
-								label={genre}
-								size="small"
-							/>
-						))}
-					</Grid>
+						<small>
+							{Intl.DateTimeFormat("pt-BR", {
+								timeStyle: "short",
+							}).format(ev.start)}
+							<Divider />
+							{Intl.DateTimeFormat("pt-BR", {
+								timeStyle: "short",
+							}).format(ev.end)}
+						</small>
+					</Box>
+				</Box>
+				<Box sx={{ display: "flex", flex: 1, flexDirection: "column", ml: 1 }}>
+					<Box sx={{ flex: 1, gap: 1, display: "grid" }}>
+						<div>{ev.summary}</div>
+
+						<small>
+							<MapPinIcon width="1em" /> {ev.location}
+						</small>
+						<Grid
+							container
+							sx={{
+								justifyContent: "flex-end",
+								gap: 1,
+							}}
+						>
+							{ev.genre.map((genre) => (
+								<Tag color={genreToPalette[genre]} key={genre} size="small">
+									{genre}
+								</Tag>
+							))}
+						</Grid>
+					</Box>
 				</Box>
 			</Box>
 		</Box>

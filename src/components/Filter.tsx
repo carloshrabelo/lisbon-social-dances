@@ -1,15 +1,15 @@
 import type { Dispatch } from "react";
 import type { Genre } from "../const/GENRES";
 import { Box, Paper } from "@mui/material";
-import { genreToPalette, palette } from "../utils/all";
 import Tag from "./Tag";
-import { ArrowPathIcon } from '@heroicons/react/16/solid'
-
+import { ArrowPathIcon } from "@heroicons/react/16/solid";
+import type { Color } from "../theme/palette";
+import { genreToPalette } from "../const/GENRES_COLORS";
 
 const Zezo = Object.entries(genreToPalette)
-	.map(([name, value]) => ({
+	.map(([name, color]) => ({
 		name: name as Genre,
-		palette: palette[value] || palette.Gray,
+		color: color as Color,
 	}))
 	.sort((a, b) => (a.name < b.name ? -1 : 1));
 
@@ -26,7 +26,14 @@ export default function Filter({
 
 	return (
 		<Paper
-			sx={{ top: 0, position: "sticky", zIndex: 1, pt: 2, pb: 3 }}
+			sx={{
+				top: 0,
+				position: "sticky",
+				zIndex: 1,
+				p: 2,
+				mb: 2,
+				boxShadow: 3,
+			}}
 			elevation={0}
 		>
 			<Box
@@ -37,27 +44,28 @@ export default function Filter({
 					gap: 1,
 					flexWrap: "wrap",
 					justifyContent: "space-between",
+					"&>div": {
+						flex: 1,
+					},
 				}}
 			>
-				{Zezo.map(({ name, palette: color }) => (
+				{Zezo.map(({ name, color }) => (
 					<Tag
 						key={name}
-						myColor={
-							!selected.length || selected.includes(name)
-								? color
-								: palette.Gray
-						}
+						color={!selected.length || selected.includes(name) ? color : "gray"}
 						onClick={toggleButton(name)}
 					>
 						{name}
 					</Tag>
 				))}
-				<Tag
-					myColor={ palette.Gray
-					}
+				{/* <Tag
+					color='DarkGray'
 					onClick={() =>onChange([])}
 				>
-					<ArrowPathIcon width='1em'/>
+					<QuestionMarkRounded width='1em'/>
+				</Tag> */}
+				<Tag color="gray" onClick={() => onChange([])}>
+					<ArrowPathIcon width="1em" />
 				</Tag>
 			</Box>
 		</Paper>

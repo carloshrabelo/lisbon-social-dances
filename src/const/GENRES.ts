@@ -6,7 +6,10 @@ export const ALIAS = {
   "AFRO":"KIZOMBA SEMBA",
   "LATINAS":"SALSA BACHATA",
   'GHETTO ZOUK': '',
-  'ZOUK✅': '',
+  'ZOUK✅': '',  
+  "SAMBA DE GAFIEIRA & VÁRIOS": "SAMBA", 
+  "SAMBA DE GAFIEIRA": "SAMBA",
+  "PISTA AFRICANA":"KIZOMBA SEMBA",
 };
 
 export const GENRES = [

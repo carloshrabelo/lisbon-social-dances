@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { palette } from "../../theme/palette";
 import { getContrastingColor } from "../../utils/getContrastingColor";
+import { css } from "@emotion/react";
+import Tag from "../Tag";
 
 export const Head = styled.h2<{ xpto?: boolean }>`
   font-size: 1em;
@@ -14,6 +16,13 @@ export const Head = styled.h2<{ xpto?: boolean }>`
   border-radius: ${p => !p.xpto && '10px 10px 0 0'};
   cursor: pointer;
   position: sticky;
+  align-content: center;
+  ${p => p.xpto && css`
+  min-height: 2em;
+  top: 0;
+  text-align: left;
+  `};
+
 `;
 
 export const Footer = styled.h2`
@@ -48,3 +57,9 @@ export const Content = styled.div`
     border-bottom-right-radius: 0;
   }
 `;
+
+export const CloseBtn = styled(Tag)`
+  font-size: 1.2em;
+  height: 1.2em;
+  width: 1.2em;
+`

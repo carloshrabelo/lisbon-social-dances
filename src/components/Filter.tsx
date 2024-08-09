@@ -2,15 +2,7 @@ import type { Genre } from "../const/GENRES";
 import { Box, Paper } from "@mui/material";
 import Tag from "./Tag";
 import { ArrowPathIcon } from "@heroicons/react/16/solid";
-import type { Color } from "../theme/palette";
-import { genreToPalette } from "../const/GENRES_COLORS";
-
-const Zezo = Object.entries(genreToPalette)
-	.map(([name, color]) => ({
-		name: name as Genre,
-		color: color as Color,
-	}))
-	.sort((a, b) => (a.name < b.name ? -1 : 1));
+import { GENRES_COLORS } from "../const/GENRES_COLORS";
 
 export default function Filter({
 	selected = [],
@@ -44,7 +36,7 @@ export default function Filter({
 					},
 				}}
 			>
-				{Zezo.map(({ name, color }) => (
+				{GENRES_COLORS.map(({ name, color }) => (
 					<Tag
 						key={name}
 						color={!selected.length || selected.includes(name) ? color : "gray"}

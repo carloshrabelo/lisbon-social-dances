@@ -8,7 +8,7 @@ const baseUrl =
 const currentDate = new Date();
 currentDate.setUTCHours(0, 0, 0, 0);
 const nextMonth = new Date();
-nextMonth.setMonth(currentDate.getMonth() + 1);
+nextMonth.setMonth(currentDate.getMonth() + 2);
 
 const params1 = new URLSearchParams({
 	sanitizeHtml: "true",

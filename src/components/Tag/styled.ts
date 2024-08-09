@@ -23,6 +23,8 @@ export const Wrapper = styled.div<Props>`
   cursor: pointer;
   font-size: ${p => p.size === 'small' ? '.65em' : '.9em'};
   user-select: none;
+  display: inline-flex;
+  justify-content: center;
 
   ${p => p.onClick && css`:active {
     transform: translateY(4px) translateZ(0);

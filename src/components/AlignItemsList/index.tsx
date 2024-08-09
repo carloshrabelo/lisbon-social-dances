@@ -6,7 +6,6 @@ import groupBy from "lodash/groupBy";
 import { Box, Divider, Drawer } from "@mui/material";
 import { Fragment, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/16/solid";
-import Tag from "../Tag";
 
 export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
@@ -38,10 +37,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								{sociais?.map((ev, key) => (
 									<Fragment key={ev.id}>
 										{!!key && <Divider sx={{ mx: 2 }} />}
-										<Item
-											{...ev}
-											onClick={() => setSelectedSocial(ev)}
-										/>
+										<Item {...ev} onClick={() => setSelectedSocial(ev)} />
 									</Fragment>
 								))}
 							</S.Content>
@@ -72,9 +68,9 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						>
 							{selectedSocial?.summary}
 							<div>
-								<Tag color="red" onClick={() => setSelectedSocial(null)}>
+								<S.CloseBtn color="red" onClick={() => setSelectedSocial(null)}>
 									<XMarkIcon width="1em" />
-								</Tag>
+								</S.CloseBtn>
 							</div>
 						</Box>
 					</S.Head>
@@ -82,12 +78,13 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						sx={{
 							whiteSpaceCollapse: "preserve",
 							p: 2,
-							maxWidth: "100vw",
+							maxWidth: "calc(100vw - 32px)",
 							textWrap: "wrap",
 							overflow: "auto",
 						}}
 					>
-						{selectedSocial?.description}
+						{/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+						<div dangerouslySetInnerHTML={{ __html: selectedSocial?.description || '' }}/>
 					</Box>
 				</Box>
 			</Drawer>

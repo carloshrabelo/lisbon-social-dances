@@ -1,11 +1,11 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Chip, Grid, IconButton } from "@mui/material";
+import { Chip, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useEventAPI from "../../store/useEventAPI";
-import CircleIcon from "@mui/icons-material/Circle";
-import GENRES_COLORS from "../../const/GENRES_COLORS";
+// import CircleIcon from "@mui/icons-material/Circle";
+// import GENRES_COLORS from "../../const/GENRES_COLORS";
 import type { Genre } from "../../const/GENRES";
 
 export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
@@ -30,20 +30,6 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 						</IconButton>
 					}
 				>
-					<Grid
-						// spacing={{ xs: 1, sm: 2 }}
-						sx={{ width: "2.5rem" }}
-						direction="row"
-					>
-						{/* {JSON.stringify(ev.genre)} */}
-
-						{ev.genre.map((genre) => (
-							<CircleIcon
-								sx={{ fontSize: "1rem", color: GENRES_COLORS[genre] }}
-								key={genre}
-							/>
-						))}
-					</Grid>
 					<ListItemText
 						secondary={
 							<>
@@ -68,14 +54,14 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
               {ev.summary}
             </div>
             <div>
-						{ev.genre.map((genre) => (
+						{/* {ev.genre.map((genre) => (
 							<Chip
 								sx={{  background: GENRES_COLORS[genre], color: "#fff"}}
 								key={genre}
                 label={genre}
                 size="small" 
 							/>
-						))}
+						))} */}
             </div>
           </ListItemText>
 				</ListItem>

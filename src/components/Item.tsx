@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Chip, Grid } from "@mui/material";
+import { Chip, Divider, Grid } from "@mui/material";
 import GENRES_COLORS from "../const/GENRES_COLORS";
 import type { Genre } from "../const/GENRES";
 import type { Event } from "../types/event";
@@ -23,22 +23,16 @@ export default function Item(ev:EventImproved) {
 	>
 		<Box sx={{ maxWidth: "3.5em" }}>
 			<div>
-				{new Intl.DateTimeFormat("pt-BR", {
-					month: "numeric",
-					day: "numeric",
-				}).format(ev.start)}
-			</div>
-			<div>
 				{Intl.DateTimeFormat("pt-BR", {
 					timeStyle: "short",
 				}).format(ev.start)}
-				{" - "}
+				<Divider/>
 				{Intl.DateTimeFormat("pt-BR", {
 					timeStyle: "short",
 				}).format(ev.end)}
 			</div>
 		</Box>
-		<Box sx={{ display: "flex", flex: 1, flexDirection: "column" }}>
+		<Box sx={{ display: "flex", flex: 1, flexDirection: "column", ml:1 }}>
 			<Box sx={{ flex: 1 }}>
 				<div>{ev.summary}</div>
 				<small>{ev.location}</small>

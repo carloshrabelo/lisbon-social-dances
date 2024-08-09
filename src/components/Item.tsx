@@ -15,14 +15,21 @@ export default function Item({
 	onClick,
 	...ev
 }: EventImproved & { onClick: any }) {
+
+	const handleClick = (ev: any) =>  ev.target.tagName !== 'A'&& onClick()
+
 	return (
 		<Box
 			sx={{
 				padding: 1,
-				borderTop:0,
-				borderBottom:0,
+				borderTop: 0,
+				borderBottom: 0,
+				'a':{
+					color: 'inherit',
+					textDecorationStyle: 'dotted',
+				}
 			}}
-			onClick={onClick}
+			onClick={handleClick}
 		>
 			<Box
 				sx={{
@@ -31,7 +38,6 @@ export default function Item({
 					position: "relative",
 					gap: 1,
 				}}
-				onClick={onClick}
 			>
 				<Box
 					sx={{
@@ -43,8 +49,8 @@ export default function Item({
 					<Box
 						sx={{
 							position: "sticky",
-							top: '32px',
-							bottom: '32px',
+							top: "32px",
+							bottom: "32px",
 							background: palette.gray.main,
 							textAlign: "center",
 							p: "4px",
@@ -67,7 +73,9 @@ export default function Item({
 						<div>{ev.summary}</div>
 
 						<small>
-							<MapPinIcon width="1em" /> {ev.location}
+							<a href={`https://www.google.com/maps?q=${ev.location}`} target="_blank" rel="noreferrer">
+								<MapPinIcon width=".9em" /> {ev.location}
+							</a>
 						</small>
 						<Grid
 							container

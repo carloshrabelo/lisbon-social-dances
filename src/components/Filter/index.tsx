@@ -15,7 +15,7 @@ export default function Filter({
 	onChange: (val: Genre) => void;
 	clearFilter: () => void;
 }) {
-	const [active, setActive] = useState(true)
+	const [active, setActive] = useState(false)
 	const toggleButton = (genre: Genre) => () => onChange(genre);
 
 	return (

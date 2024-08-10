@@ -31,8 +31,8 @@ export const ShowFilter = styled(Tag)`
   font-size: .9em;
   position: fixed;
   right: 8px;
-  top: 16px;
-  z-index: 1;
+  top: 32px;
+  z-index: 5;
   ${btn}
 `
 export const CloseBtn = styled(Tag)`

@@ -1,7 +1,7 @@
 import useEventAPI, { type EventImproved } from "../../store/useEventAPI";
 import type { Genre } from "../../const/GENRES";
 import Item from "../Item";
-import * as S from "./styled";
+import * as S from "./styles";
 import groupBy from "lodash/groupBy";
 import { Box, Divider, Drawer } from "@mui/material";
 import { Fragment, useState } from "react";

@@ -16,9 +16,10 @@ export const Head = styled.h2<{ xpto?: boolean }>`
   border-radius: ${p => !p.xpto && '10px 10px 0 0'};
   position: sticky;
   align-content: center;
+  top: 0;
+  z-index: 2;
   ${p => p.xpto && css`
   min-height: 2em;
-  top: 0;
   text-align: left;
   `};
 

@@ -50,7 +50,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								</Box>
 									<div>
 										{new Intl.DateTimeFormat("pt-BR", {
-											dateStyle: "long",
+											day: "2-digit", month: "long"
 										}).format(new Date(date))}
 									</div>
 									<Box
@@ -93,7 +93,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								</Box>
 									<div>
 										{new Intl.DateTimeFormat("pt-BR", {
-											dateStyle: "long",
+											day: "2-digit", month: "long"
 										}).format(new Date(date))}
 									</div>
 									<Box

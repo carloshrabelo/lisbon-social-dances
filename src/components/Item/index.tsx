@@ -5,8 +5,8 @@ import type { Genre } from "../../const/GENRES";
 import type { Event } from "../../types/event";
 import { palette } from "../../utils/all";
 import * as S from "./styled";
-import Tag from "../Tag";
 import { MapPin } from "@phosphor-icons/react";
+import GenreTag from "../GenreTag";
 
 type EventImproved = Event & {
 	genre: Genre[];
@@ -34,14 +34,7 @@ export default function Item({
 			onClick={handleClick}
 		>
 			<S.Title>
-				<S.Tag
-					color={
-						(match in genreToPalette && genreToPalette[match as keyof typeof genreToPalette]) ||
-						"dark-gray"
-					}
-				>
-					{match}
-				</S.Tag>
+				<S.Tag genre={match as keyof typeof genreToPalette} color="dark-gray" />
 				{restOfText.join(" • ")}
 			</S.Title>
 			<Box
@@ -85,7 +78,7 @@ export default function Item({
 					<Box sx={{ flex: 1 }}>
 						<small>
 							<a
-								href={`https://www.google.com/maps?q=${ev.location}`}
+								href={`https://www.google.com/maps?q=${encodeURIComponent(ev.location)}`}
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -101,9 +94,7 @@ export default function Item({
 							}}
 						>
 							{ev.genre.map((genre) => (
-								<Tag color={genreToPalette[genre as keyof typeof genreToPalette]} key={genre} size="small">
-									{genre}
-								</Tag>
+								<GenreTag genre={genre} key={genre} small />
 							))}
 						</Grid>
 					</Box>

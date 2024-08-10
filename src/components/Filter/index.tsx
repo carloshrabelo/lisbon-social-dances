@@ -1,8 +1,10 @@
-import type { Genre } from "../const/GENRES";
-import { Box, Paper } from "@mui/material";
-import Tag from "./Tag";
-import { GENRES_COLORS } from "../const/GENRES_COLORS";
-import { ArrowsClockwise } from "@phosphor-icons/react";
+import type { Genre } from "../../const/GENRES";
+import { Box } from "@mui/material";
+import Tag from "../Tag";
+import { GENRES_COLORS } from "../../const/GENRES_COLORS";
+import { ArrowsClockwise, CaretUp, Funnel } from "@phosphor-icons/react";
+import * as S from "./styles";
+import { useState } from "react";
 
 export default function Filter({
 	selected = [],
@@ -13,20 +15,12 @@ export default function Filter({
 	onChange: (val: Genre) => void;
 	clearFilter: () => void;
 }) {
+	const [active, setActive] = useState(true)
 	const toggleButton = (genre: Genre) => () => onChange(genre);
 
 	return (
-		<Paper
-			sx={{
-				top: 0,
-				position: "sticky",
-				zIndex: 1,
-				p: 2,
-				mb: 2,
-				boxShadow: 3,
-			}}
-			elevation={0}
-		>
+		<>
+		<S.Wrapper active={active}>
 			<Box
 				sx={{
 					display: "flex",
@@ -51,7 +45,7 @@ export default function Filter({
 				))}
 				{/* <Tag
 					color='dark-gray'
-					onClick={() =>onChange([])}
+					onClick={() =>onChange([])}	
 				>
 					<SealQuestion weight="duotone" size='1.5em'/>
 				</Tag> */}
@@ -59,6 +53,19 @@ export default function Filter({
 					<ArrowsClockwise weight="bold" size="1.25em" />
 				</Tag>
 			</Box>
-		</Paper>
+			{active ? 
+			<S.CloseBtn onClick={() => setActive(false)} >				
+				<CaretUp weight="duotone" size="1.25em" />
+			</S.CloseBtn> : null
+			}
+		</S.Wrapper>
+			{active ? null : 
+			<S.ShowFilter onClick={() => setActive(true)} >				
+				<S.Badge badgeContent={selected.length} color="primary">
+					<Funnel weight="duotone" size="1.25em" />
+				</S.Badge>
+			</S.ShowFilter>
+			}
+		</>
 	);
 }

@@ -3,7 +3,7 @@ import { type Color, palette, type ColorEntry } from "../../theme/palette";
 import { css } from "@emotion/react";
 import { getContrastingColor } from "../../utils/getContrastingColor";
 
-type Props = { color: Color, size?: string };
+type Props = { color?: Color, size?: string };
 
 const getColor =
   (variant: keyof ColorEntry = "main") =>

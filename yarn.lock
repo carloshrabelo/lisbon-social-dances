@@ -469,11 +469,6 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.5.tgz#105c37d9d9620ce69b7f692a20c821bf1ad2cbf9"
   integrity sha512-sTcG+QZ6fdEUObICavU+aB3Mp8HY4n14wYHdxK4fXjPmv3PXZZeY5RaguJmGyeH/CJQhX3fqKUtS4qc1LoHwhQ==
 
-"@heroicons/react@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.1.5.tgz#1e13f34976cc542deae92353c01c8b3d7942e9ba"
-  integrity sha512-FuzFN+BsHa+7OxbvAERtgBTNeZpUjgM/MIizfVkSCL2/edriN0Hx/DWRCR//aPYwO5QX/YlgLGXk+E3PcfZwjA==
-
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -542,13 +537,6 @@
   version "6.0.0-dev.240424162023-9968b4889d"
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.0.0-dev.240424162023-9968b4889d.tgz#4c86c5f19418c1939cc990002fd307a9c9f9c5ab"
   integrity sha512-doh3M3U7HUGSBIWGe1yvesSbfDguMRjP0N09ogWSBM2hovXAlgULhMgcRTepAZLLwfRxFII0bCohq6B9NqoKuw==
-
-"@mui/icons-material@^6.0.0-beta.4":
-  version "6.0.0-dev.240424162023-9968b4889d"
-  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-6.0.0-dev.240424162023-9968b4889d.tgz#77234aded0af619e5dd482ba8a009ddce3327d58"
-  integrity sha512-HOgKboL1XWpU6O/oKSa0oCXpTnsAbd3o+dETvO137VIJLbA2vh9g1JK2hAZHKFHCe7kzK3voxQH0odFbzocprQ==
-  dependencies:
-    "@babel/runtime" "^7.24.4"
 
 "@mui/material@^6.0.0-beta.4":
   version "6.0.0-dev.240424162023-9968b4889d"
@@ -681,6 +669,11 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@phosphor-icons/react@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@phosphor-icons/react/-/react-2.1.7.tgz#b11a4b25849b7e3849970b688d9fe91e5d4fd8d7"
+  integrity sha512-g2e2eVAn1XG2a+LI09QU3IORLhnFNAFkNbo2iwbX6NOKSLOwvEMmTa7CgOzEbgNWR47z8i8kwjdvYZ5fkGx1mQ==
 
 "@popperjs/core@^2.11.8":
   version "2.11.8"
@@ -1833,7 +1826,7 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -1859,13 +1852,6 @@ react-dom@^18.3.1:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
-
-react-feather@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/react-feather/-/react-feather-2.0.10.tgz#0e9abf05a66754f7b7bb71757ac4da7fb6be3b68"
-  integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
-  dependencies:
-    prop-types "^15.7.2"
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

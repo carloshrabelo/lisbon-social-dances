@@ -1,14 +1,18 @@
 import type { Genre } from "../const/GENRES";
 import { Box, Paper } from "@mui/material";
 import Tag from "./Tag";
-import { ArrowPathIcon } from "@heroicons/react/16/solid";
 import { GENRES_COLORS } from "../const/GENRES_COLORS";
+import { ArrowsClockwise } from "@phosphor-icons/react";
 
 export default function Filter({
 	selected = [],
 	onChange,
-	clearFilter
-}: { selected: Genre[]; onChange: (val:Genre) => void ; clearFilter: () => void }) {
+	clearFilter,
+}: {
+	selected: Genre[];
+	onChange: (val: Genre) => void;
+	clearFilter: () => void;
+}) {
 	const toggleButton = (genre: Genre) => () => onChange(genre);
 
 	return (
@@ -46,13 +50,13 @@ export default function Filter({
 					</Tag>
 				))}
 				{/* <Tag
-					color='DarkGray'
+					color='dark-gray'
 					onClick={() =>onChange([])}
 				>
-					<QuestionMarkRounded width='1em'/>
+					<SealQuestion weight="duotone" size='1.5em'/>
 				</Tag> */}
 				<Tag color="gray" onClick={clearFilter}>
-					<ArrowPathIcon width="1em" />
+					<ArrowsClockwise weight="bold" size="1.25em" />
 				</Tag>
 			</Box>
 		</Paper>

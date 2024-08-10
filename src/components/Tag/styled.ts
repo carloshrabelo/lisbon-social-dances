@@ -10,6 +10,7 @@ const getColor =
     (p: Props) => p.color && palette[p.color]?.[variant] || palette.gray[variant];
 
 export const Wrapper = styled.div<Props>`
+  align-items: center;
   font-family: "Feather Bold";
   background-color: ${getColor()};
   color: ${p => getContrastingColor(getColor()(p))};

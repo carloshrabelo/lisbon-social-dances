@@ -5,7 +5,8 @@ import * as S from "./styled";
 import groupBy from "lodash/groupBy";
 import { Box, Divider, Drawer } from "@mui/material";
 import { Fragment, useState } from "react";
-import { XMarkIcon } from "@heroicons/react/16/solid";
+import { X } from "@phosphor-icons/react";
+import { palette } from "../../theme/palette";
 
 export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
@@ -29,9 +30,39 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 					([date, sociais]: [string, EventImproved[]]) => (
 						<div key={date}>
 							<S.Head>
-								{new Intl.DateTimeFormat("pt-BR", {
-									dateStyle: "medium",
-								}).format(new Date(date))}
+								<Box
+									sx={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "space-between",
+										gap: 2,
+									}}
+								>
+								<Box
+									sx={{
+										color: palette['dark-gray'].main,
+										textTransform: "capitalize",
+										fontSize: "12px"
+									}}>
+									{new Intl.DateTimeFormat("pt-BR", {
+										weekday: "long",
+									}).format(new Date(date))}
+								</Box>
+									<div>
+										{new Intl.DateTimeFormat("pt-BR", {
+											dateStyle: "long",
+										}).format(new Date(date))}
+									</div>
+									<Box
+									sx={{
+										textTransform: "capitalize",
+										fontSize: "12px"
+									}}>
+										{new Intl.DateTimeFormat("pt-BR", {
+											weekday: "long",
+										}).format(new Date(date))}
+									</Box>
+								</Box>
 							</S.Head>
 							<S.Content>
 								{sociais?.map((ev, key) => (
@@ -42,9 +73,39 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 								))}
 							</S.Content>
 							<S.Footer>
-								{new Intl.DateTimeFormat("pt-BR", {
-									dateStyle: "medium",
-								}).format(new Date(date))}
+								<Box
+									sx={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "space-between",
+										gap: 2,
+									}}
+								>
+								<Box
+									sx={{
+										color: palette['dark-gray'].main,
+										textTransform: "capitalize",
+										fontSize: "12px"
+									}}>
+									{new Intl.DateTimeFormat("pt-BR", {
+										weekday: "long",
+									}).format(new Date(date))}
+								</Box>
+									<div>
+										{new Intl.DateTimeFormat("pt-BR", {
+											dateStyle: "long",
+										}).format(new Date(date))}
+									</div>
+									<Box
+									sx={{
+										textTransform: "capitalize",
+										fontSize: "12px"
+									}}>
+										{new Intl.DateTimeFormat("pt-BR", {
+											weekday: "long",
+										}).format(new Date(date))}
+									</Box>
+								</Box>
 							</S.Footer>
 						</div>
 					),
@@ -69,7 +130,7 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 							{selectedSocial?.summary}
 							<div>
 								<S.CloseBtn color="red" onClick={() => setSelectedSocial(null)}>
-									<XMarkIcon width="1em" />
+									<X weight="bold"/>
 								</S.CloseBtn>
 							</div>
 						</Box>
@@ -84,7 +145,11 @@ export default function AlignItemsList({ filters }: { filters: Genre[] }) {
 						}}
 					>
 						{/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-						<div dangerouslySetInnerHTML={{ __html: selectedSocial?.description || '' }}/>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: selectedSocial?.description || "",
+							}}
+						/>
 					</Box>
 				</Box>
 			</Drawer>

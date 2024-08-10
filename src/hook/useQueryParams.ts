@@ -47,7 +47,6 @@ const removeQueryParams = (key: string | string[]) => {
     const params = new URLSearchParams(window.location.search);
 
     for (const k of keys) {
-        console.info(`Removing ${k},${Array.isArray(key)}`)
         params.delete(k);
     }
 

@@ -3,10 +3,10 @@ import { Divider, Grid } from "@mui/material";
 import { genreToPalette } from "../../const/GENRES_COLORS";
 import type { Genre } from "../../const/GENRES";
 import type { Event } from "../../types/event";
-import { MapPinIcon } from "@heroicons/react/24/outline";
 import { palette } from "../../utils/all";
 import * as S from "./styled";
 import Tag from "../Tag";
+import { MapPin } from "@phosphor-icons/react";
 
 type EventImproved = Event & {
 	genre: Genre[];
@@ -89,7 +89,7 @@ export default function Item({
 								target="_blank"
 								rel="noreferrer"
 							>
-								<MapPinIcon width=".9em" /> {ev.location}
+								<MapPin weight="duotone"/> {ev.location}
 							</a>
 						</small>
 						<Grid

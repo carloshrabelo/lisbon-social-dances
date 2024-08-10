@@ -2,11 +2,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { Chip, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import useEventAPI from "../../store/useEventAPI";
-// import CircleIcon from "@mui/icons-material/Circle";
-// import GENRES_COLORS from "../../const/GENRES_COLORS";
 import type { Genre } from "../../const/GENRES";
+import { Trash } from "@phosphor-icons/react";
 
 export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 	const { data, isLoading, error } = useEventAPI({ genres: filters });
@@ -25,7 +23,7 @@ export default function AlignItemsList({ filters }:{ filters: Genre[] }) {
 					key={key}
 					secondaryAction={
 						<IconButton edge="end" aria-label="delete">
-							<DeleteIcon />
+							<Trash />
 							<Chip color="primary" label="data.label" size="small"  />
 						</IconButton>
 					}

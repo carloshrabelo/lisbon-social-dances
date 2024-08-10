@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 import Tag from "../Tag";
 
 export const Head = styled.h2<{ xpto?: boolean }>`
-  font-size: 1em;
+  font-size: 14px;
   background-color: ${palette['dark-gray'].main};
   color: ${getContrastingColor(palette['dark-gray'].main)};
   flex: 1;
@@ -14,7 +14,6 @@ export const Head = styled.h2<{ xpto?: boolean }>`
   padding: 4px 12px;
   position: relative;
   border-radius: ${p => !p.xpto && '10px 10px 0 0'};
-  cursor: pointer;
   position: sticky;
   align-content: center;
   ${p => p.xpto && css`
@@ -26,7 +25,7 @@ export const Head = styled.h2<{ xpto?: boolean }>`
 `;
 
 export const Footer = styled.h2`
-  font-size: 1em;
+  font-size: 14px;
   background-color: ${palette['dark-gray'].main};
   color: ${getContrastingColor(palette['dark-gray'].main)};
   flex: 1;
@@ -59,7 +58,9 @@ export const Content = styled.div`
 `;
 
 export const CloseBtn = styled(Tag)`
-  font-size: 1.2em;
-  height: 1.2em;
-  width: 1.2em;
+  display: block;
+  font-size: .9em;
+  line-height: 2em;
+  height: 2em;
+  width: 1.5em;
 `

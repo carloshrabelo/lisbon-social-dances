@@ -3,10 +3,11 @@ import { Divider, Grid } from "@mui/material";
 import { genreToPalette } from "../../const/GENRES_COLORS";
 import type { Genre } from "../../const/GENRES";
 import type { Event } from "../../types/event";
-import { palette } from "../../utils/all";
 import * as S from "./styled";
 import { MapPin } from "@phosphor-icons/react";
 import GenreTag from "../GenreTag";
+import { palette } from "../../theme/palette";
+import { getTime } from "../../utils/dateFormater";
 
 type EventImproved = Event & {
 	genre: Genre[];
@@ -64,13 +65,9 @@ export default function Item({
 						}}
 					>
 						<small>
-							{Intl.DateTimeFormat("pt-BR", {
-								timeStyle: "short",
-							}).format(ev.start)}
+							{getTime(ev.start)}
 							<Divider sx={{ mx: 1 }} />
-							{Intl.DateTimeFormat("pt-BR", {
-								timeStyle: "short",
-							}).format(ev.end)}
+							{getTime(ev.end)}
 						</small>
 					</Box>
 				</Box>

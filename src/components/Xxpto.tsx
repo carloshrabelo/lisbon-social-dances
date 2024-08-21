@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import ColorBox from "./ColorBox";
-import { combinedColors } from "../utils/all";
+import { combinedColors } from "../utils/combinedColors";
 
 export default function Xpto() {
 

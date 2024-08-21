@@ -1,10 +1,7 @@
 import type { Color } from "../theme/palette";
 import type { Genre } from "./GENRES";
 
-const Alias = ["Samba de Gafieira & Vários", "Samba de Gafieira"] as const
-type PP = (typeof Alias)[number]
-
-type GenreColors = Record<Genre & PP, Color>;
+type GenreColors = Record<Genre,Color>;
 
 export const genreToPalette: GenreColors = {
 	Bachata: "wine",
@@ -18,12 +15,9 @@ export const genreToPalette: GenreColors = {
 	Tango: "orange",
 	Zouk: "purple",
 	"West Coast Swing": "teal",
-	"Samba de Gafieira & Vários": "yellow",
-	"Samba de Gafieira": "yellow",
 };
 
 export const GENRES_COLORS = Object.entries(genreToPalette)
-.filter(([genre]) => !Alias.includes(genre as PP))
 	.map(([name, color]) => ({
 		name: name as Genre,
 		color: color as Color,

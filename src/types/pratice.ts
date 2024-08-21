@@ -28,7 +28,7 @@ type Item = {
 	eventType: string;
 };
 
-type Calendar = {
+export type Calendar = { 
 	kind: string;
 	etag: string;
 	summary: string;

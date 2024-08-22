@@ -16,7 +16,7 @@ const getGenreColor = (genre: Genre) => {
 	return genreToPalette[getGenre(genre) as keyof typeof genreToPalette];
 };
 
-export default ({
+export const GenreTag = ({
 	genre,
 	small,
 	color,
@@ -32,3 +32,5 @@ export default ({
 		</Tag>
 	);
 };
+
+export default GenreTag
